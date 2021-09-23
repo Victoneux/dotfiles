@@ -2,7 +2,7 @@
 # The git repo directory must be placed as ~/dotfiles
 
 ln -sf ~/dotfiles/picom.conf ~/.config/picom.conf
-
+ln -sf ~/dotfiles/gtk-3.0/ ~/.config/
 ln -sf ~/dotfiles/awesome/ ~/.config/
 ln -sf ~/dotfiles/rofi/ ~/.config/
 ln -sf ~/dotfiles/fusuma ~/.config/
