@@ -16,24 +16,9 @@ options="$english\n$german"
 
 chosen="$(echo -e "$options" | $rofi_command -p "Language Select" -dmenu -selected-row 0)"
 case $chosen in
-    $english)
-		ans=$(confirm_exit &)
-		if [[ $ans == "yes" || $ans == "YES" || $ans == "y" || $ans == "Y" ]]; then
-			setxkbmap -layout us
-		elif [[ $ans == "no" || $ans == "NO" || $ans == "n" || $ans == "N" ]]; then
-			exit 0
-        else
-			msg
-        fi
+        setxkbmap -layout us
         ;;
     $german)
-		ans=$(confirm_exit &)
-		if [[ $ans == "yes" || $ans == "YES" || $ans == "y" || $ans == "Y" ]]; then
-			setxkbmap -layout de
-		elif [[ $ans == "no" || $ans == "NO" || $ans == "n" || $ans == "N" ]]; then
-			exit 0
-        else
-			msg
-        fi
+		    setxkbmap -layout de
         ;;
 esac
