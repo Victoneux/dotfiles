@@ -16,9 +16,10 @@ options="$english\n$german"
 
 chosen="$(echo -e "$options" | $rofi_command -p "Language Select" -dmenu -selected-row 0)"
 case $chosen in
+    $english)
         setxkbmap -layout us
         ;;
     $german)
-		    setxkbmap -layout de
+		setxkbmap -layout de
         ;;
 esac
