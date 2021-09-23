@@ -10,6 +10,7 @@ globalkeys = gears.table.join(
     awful.key({ modkey, }, "d", function () awful.spawn(discord) end),
     awful.key({ modkey, }, "r", function () awful.spawn("rofi -theme applauncher.rasi -modi drun -show drun") end),
     awful.key({ modkey, }, "k", function () awful.spawn("bash /home/victoneux/.config/rofi/powermenu.sh") end),
+    awful.key({ modkey, "Control" }, "l", function () awful.spawn("bash /home/victoneux/.config/rofi/languageswitch.sh") end),
     awful.key({ modkey, }, "v", function () 
         currentscreen = awful.screen.focused()
         if currentscreen.wibox.visible then currentscreen.wibox.visible = false
