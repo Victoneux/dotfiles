@@ -1,0 +1,10 @@
+swipe:
+  3:
+    left:
+      command: "sh /good/home/spooky_dotfiles/scripts/screenorient.sh left"
+    right:
+      command: "sh /good/home/spooky_dotfiles/scripts/screenorient.sh right"
+    up:
+      command: "sh /good/home/spooky_dotfiles/scripts/screenorient.sh normal"
+    down:
+      command: "sh /good/home/spooky_dotfiles/scripts/screenorient.sh inverted"
