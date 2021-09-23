@@ -2,7 +2,7 @@ rofi_command="rofi -theme powermenu.rasi"
 
 # Options
 shutdown=""
-reboot="勒"
+reboot=""
 quit=""
 lock=""
 

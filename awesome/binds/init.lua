@@ -29,10 +29,10 @@ globalkeys = gears.table.join(
     awful.key({ modkey, }, ".", function () awful.layout.inc(-1) end),
     awful.key({ modkey, }, ",", function () awful.layout.inc(1) end),
     awful.key({ modkey, }, "#107", function ()
-        awful.spawn("flameshot gui -p /good/home/Screenshots/")
+        awful.spawn("flameshot gui -p /home/victoneux/Screenshots/")
     end),
     awful.key({ }, "#107", function ()
-        awful.spawn("flameshot screen -c -p /good/home/Screenshots/")
+        awful.spawn("flameshot screen -c -p /home/victoneux/Screenshots/")
     end),
     awful.key({ modkey, }, "#67", function ()
         os.execute("amixer -D pulse set Master toggle")
