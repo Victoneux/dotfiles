@@ -76,7 +76,7 @@ theme.cool1 = theme.gtk.button_bg_color
 
 theme.icon_theme = "papirus"
 
-theme.titlebar_height = dpi(30)
-theme.topbar_height = dpi(34)
+theme.titlebar_height = dpi(28)
+theme.topbar_height = dpi(31)
 
 return theme
