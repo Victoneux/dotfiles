@@ -25,7 +25,7 @@ beautiful.init(gears.filesystem.get_configuration_dir() .. "theme/init.lua")
 -- Some Cool Defines
 terminal = "terminator"
 browser = "firefox --new-window"
-discord = "lightcord"
+discord = "discord"
 modkey = "Mod4"
 home_dir = "/good/home"
 
