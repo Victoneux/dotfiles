@@ -127,6 +127,7 @@ awful.screen.connect_for_each_screen(function(s)
             s.spacer
         }
     }
+    s.coolpanel = require("layout/panel")(s)
 end)
 
 -- Awful Rules

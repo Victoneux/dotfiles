@@ -49,6 +49,9 @@ globalkeys = gears.table.join(
     awful.key({ modkey, }, "#73", function ()
         os.execute("xset dpms force off")
     end),
+    awful.key({ modkey, }, "q", function ()
+        awesome.emit_signal("panel::visibility::toggle")
+    end),
     awful.key({ modkey, }, "#74", function ()
         if string.match(networkstatus, "enabled") then
             os.execute("nmcli networking off")

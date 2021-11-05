@@ -8,4 +8,4 @@ ln -sf ~/dotfiles/rofi/ ~/.config/
 ln -sf ~/dotfiles/fusuma ~/.config/
 ln -sf ~/dotfiles/betterlockscreenrc ~/.config/
 ln -sf ~/dotfiles/terminator ~/.config/
-
+ln -sf ~/dotfiles/gtk-settings.ini ~/.config/gtk-3.0/settings.ini
