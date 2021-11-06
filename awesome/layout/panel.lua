@@ -15,6 +15,7 @@ local _panel = function(s)
         height = 300,
         screen = s,
         bg = beautiful.cool1,
+        shape = function(cr,w,h) gears.shape.partially_rounded_rect(cr,w,h,true,true,false,false,9) end
     }
 
     awful.placement.bottom(panel)
@@ -35,15 +36,9 @@ local _panel = function(s)
     }
 
     panel : setup {
-        layout = wibox.container.margin,
-        top = 4,
-        left = 4,
-        right = 4,
-        {
-            layout = wibox.container.background,
-            bg = beautiful.background,
-            panel_widget2
-        }
+        layout = wibox.container.background,
+        bg = beautiful.background,
+        panel_widget2
     }
 
     return panel

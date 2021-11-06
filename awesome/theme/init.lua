@@ -57,6 +57,7 @@ theme.useless_gap = dpi(6)
 -- Colors!
 theme.background = theme.gtk.bg_color
 theme.foreground = theme.gtk.fg_color
+theme.cool1 = theme.gtk.button_bg_color
 theme.transparent = '#ffffff00'
 
 -- Some Other Stuff
@@ -71,8 +72,6 @@ theme.tasklist_bg_normal = theme.transparent
 theme.tasklist_bg_focus = theme.gtk.selected_bg_color
 theme.layout_tile = icons_path .. "layouts/tile.svg"
 theme.layout_floating = icons_path .. "layouts/floating.svg"
-
-theme.cool1 = theme.gtk.button_bg_color
 
 theme.icon_theme = "papirus"
 

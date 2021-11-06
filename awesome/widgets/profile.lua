@@ -31,7 +31,7 @@ local profilename = wibox.widget {
         forced_width = 2000,
         forced_height = 1000,
         bg = beautiful.background,
-        shape = gears.shape.rounded_rect,
+        shape = function(cr,w,h) gears.shape.rounded_rect(cr,w,h,9) end,
         {
             widget = wibox.container.place,
             {
@@ -63,6 +63,7 @@ thewidget:ajust_ratio(2, 0.75, 0.1, 0.15)
 
 thewidget2 = wibox.widget {
     widget = wibox.container.background,
+    shape = function(cr,w,h) gears.shape.rounded_rect(cr,w,h,9) end,
     bg = beautiful.cool1,
     margins = 5,
     thewidget

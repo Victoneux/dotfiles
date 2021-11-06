@@ -57,46 +57,6 @@ awful.screen.connect_for_each_screen(function(s)
 
     -- Define Desktops
     awful.tag({ "1" }, s, awful.layout.layouts[1])
-
-    -- Tasklist
-    local tasklist_buttons = gears.table.join(
-        awful.button({ }, 1, function (c)
-            if c == client.focus then c.minimized = true
-            else c:emit_signal("request::activate", "tasklist", {raise = true}) end
-        end)
-    )
-    s.tasklist = awful.widget.tasklist {
-        screen = s,
-        filter = awful.widget.tasklist.filter.currenttags,
-        buttons = tasklist_buttons,
-        layout = {
-            layout = wibox.layout.flex.horizontal,
-            spacing = 4
-        },
-        widget_template = {
-            widget = wibox.container.background,
-            id = 'background_role',
-            {
-                widget = wibox.container.margin,
-                top = 2,
-                {
-                    widget = wibox.container.background,
-                    bg = beautiful.bg_normal,
-                    {
-                        widget = wibox.container.margin,
-                        left = 12,
-                        right = 12,
-                        top = 3,
-                        bottom = 5,
-                        {
-                            id = 'icon_role',
-                            widget = wibox.widget.imagebox
-                        }
-                    }
-                }
-            }
-        }
-    }
     -- Spacer
     s.spacer = require("widgets/spacer")
     -- Wibox Init
@@ -104,7 +64,7 @@ awful.screen.connect_for_each_screen(function(s)
         {
             position = "top",
             screen = s,
-            height = beautiful.topbar_height,
+            height = beautiful.topbar_height
         }
     )
     -- Wibox Setup
@@ -116,7 +76,7 @@ awful.screen.connect_for_each_screen(function(s)
             s.spacer,
             require("widgets/battery"),
         },
-        s.tasklist,
+        require("widgets/tasklist")(s),
         {
             layout = wibox.layout.fixed.horizontal,
             require("widgets/network"),
@@ -127,6 +87,7 @@ awful.screen.connect_for_each_screen(function(s)
             s.spacer
         }
     }
+
     s.coolpanel = require("layout/panel")(s)
 end)
 
