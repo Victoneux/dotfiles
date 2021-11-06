@@ -7,7 +7,8 @@ local dpi = xresources.apply_dpi
 
 local profileimagebox = wibox.widget {
     widget = wibox.container.margin,
-    margins = 10,
+    left = 10,
+    right = 10,
     {
         widget = wibox.container.background,
         shape = gears.shape.circle,
@@ -15,7 +16,7 @@ local profileimagebox = wibox.widget {
         {
             widget = wibox.container.place,
             {
-                image = "/home/victoneux/Downloads/pfp.png",
+                image = "/home/victoneux/dotfiles/pfp.jpg",
                 resize = true,
                 widget = wibox.widget.imagebox
             }
@@ -27,25 +28,44 @@ local profilename = wibox.widget {
     layout = wibox.container.place,
     {
         widget = wibox.container.background,
-        bg = beautiful.cool1,
+        forced_width = 2000,
+        forced_height = 1000,
+        bg = beautiful.background,
         shape = gears.shape.rounded_rect,
         {
-            widget = wibox.container.margin,
-            top = 5,
-            bottom = 5,
-            left = 25,
-            right = 25,
-            wibox.widget.textbox("Victoneux")
+            widget = wibox.container.place,
+            {
+                widget = wibox.widget.textbox,
+                text = "Victoneux",
+                font = "Roboto 15"
+            }
         }
     }
 }
 
 local thewidget = wibox.widget {
     profileimagebox,
-    profilename,
+    wibox.widget {
+        forced_height = 0,
+        forced_width = 0
+    },
+    {
+        widget = wibox.container.margin,
+        left = 50,
+        right = 50,
+        profilename
+    },
     layout = wibox.layout.ratio.vertical,
+    inner_fill_strategy = "spacing"
 }
 
-thewidget:set_ratio(1, 0.8)
+thewidget:ajust_ratio(2, 0.75, 0.1, 0.15)
 
-return thewidget
+thewidget2 = wibox.widget {
+    widget = wibox.container.background,
+    bg = beautiful.cool1,
+    margins = 5,
+    thewidget
+}
+
+return thewidget2

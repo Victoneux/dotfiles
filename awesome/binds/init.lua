@@ -49,8 +49,10 @@ globalkeys = gears.table.join(
     awful.key({ modkey, }, "#73", function ()
         os.execute("xset dpms force off")
     end),
-    awful.key({ modkey, }, "q", function ()
-        awesome.emit_signal("panel::visibility::toggle")
+    awful.key({ modkey, }, "q", function () 
+        currentscreen = awful.screen.focused()
+        if currentscreen.coolpanel.visible then currentscreen.coolpanel.visible = false
+        else currentscreen.coolpanel.visible = true end
     end),
     awful.key({ modkey, }, "#74", function ()
         if string.match(networkstatus, "enabled") then

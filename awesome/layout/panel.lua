@@ -11,8 +11,8 @@ local _panel = function(s)
         ontop = true,
         splash = false,
         type = 'dock',
-        width = 1920,
-        height = 400,
+        width = s.geometry.width*0.95,
+        height = 300,
         screen = s,
         bg = beautiful.cool1,
     }
@@ -22,37 +22,29 @@ local _panel = function(s)
     local panel_widget = wibox.widget {
         expand = 'none',
         spacing = 4,
-        layout = wibox.layout.grid
+        layout = wibox.layout.grid,
+        spacing = 5,
     }
-    panel_widget:add_widget_at(require("widgets/profile"), 1, 1, 1, 3)
+    panel_widget:add_widget_at(require("widgets/profile"), 1, 1, 2, 1)
+    panel_widget:add_widget_at(require("widgets/profile"), 1, 2, 2, 1)
+
+    local panel_widget2 = wibox.widget {
+        widget = wibox.container.margin,
+        margins = 5,
+        panel_widget
+    }
 
     panel : setup {
         layout = wibox.container.margin,
         top = 4,
+        left = 4,
+        right = 4,
         {
             layout = wibox.container.background,
             bg = beautiful.background,
-            panel_widget
+            panel_widget2
         }
     }
-
-    awesome.connect_signal (
-        'panel::visibility::toggle',
-        function()
-            panel:emit_signal('toggle')
-        end
-    )
-
-    panel:connect_signal(
-        'toggle',
-        function()
-            if panel.visible == true then
-                panel.visible = false
-            else
-                panel.visible = true
-            end
-        end
-    )
 
     return panel
 end
