@@ -49,17 +49,21 @@ local thewidget = wibox.widget {
         forced_height = 0,
         forced_width = 0
     },
+    wibox.widget {
+        forced_height = 0,
+        forced_width = 0
+    },
     {
         widget = wibox.container.margin,
-        left = 50,
-        right = 50,
+        left = 32,
+        right = 32,
         profilename
     },
     layout = wibox.layout.ratio.vertical,
     inner_fill_strategy = "spacing"
 }
 
-thewidget:ajust_ratio(2, 0.75, 0.1, 0.15)
+thewidget:ajust_ratio(2, 0.68, 0.12, 0.2)
 
 thewidget2 = wibox.widget {
     widget = wibox.container.background,

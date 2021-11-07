@@ -94,14 +94,14 @@ end)
 -- Awful Rules
 awful.rules.rules = {
     { rule = { },
-      properties = { border_width = 0,
+        properties = {
                      focus = awful.client.focus.filter,
                      raise = true,
                      buttons = clientbuttons,
                      keys = clientkeys,
                      screen = awful.screen.preferred,
                      placement = awful.placement.no_overlap+awful.placement.no_offscreen
-                    }
+        }
     },
     -- Floating windows
     {
@@ -150,7 +150,21 @@ awful.rules.rules = {
             },
         },
         properties = { placement = awful.placement.centered }
+    },
+    --Terminator left bar
+    {
+        rule_any = {
+            class = {
+                "terminator", "Terminator"
+            },
+        },
+        callback = function(c)
+            awful.titlebar.enable_tooltip = false
+            awful.titlebar(c, {size=7, position="left", bg_normal='#1a1c23', bg_focus='#1a1c23'}) : setup {}
+        end
     }
+
+    -- Get Rule Name With xprop
 }
 -- Client Init
 client.connect_signal("manage", function (c)
