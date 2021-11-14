@@ -36,23 +36,30 @@ globalkeys = gears.table.join(
     end),
     awful.key({ modkey, }, "#67", function ()
         os.execute("amixer -D pulse set Master toggle")
-        volume_timer:emit_signal("timeout")
     end),
     awful.key({ modkey, }, "#68", function ()
         os.execute("amixer -D pulse set Master 5%-")
-        volume_timer:emit_signal("timeout")
     end),
     awful.key({ modkey, }, "#69", function ()
         os.execute("amixer -D pulse set Master 5%+") -- 69 nice
-        volume_timer:emit_signal("timeout")
     end),
     awful.key({ modkey, }, "#73", function ()
         os.execute("xset dpms force off")
     end),
     awful.key({ modkey, }, "q", function () 
         currentscreen = awful.screen.focused()
-        if currentscreen.coolpanel.visible then currentscreen.coolpanel.visible = false
-        else currentscreen.coolpanel.visible = true end
+        
+        currentscreen.coolpanel.visible = not currentscreen.coolpanel.visible
+
+        if (currentscreen.coolpanel.visible) then
+            currentscreen.padding = {
+                left = currentscreen.padding.left+currentscreen.coolpanel.width+(beautiful.useless_gap*2),
+            }
+        else
+            currentscreen.padding = {
+                left = currentscreen.padding.left-currentscreen.coolpanel.width-(beautiful.useless_gap*2),
+            }
+        end
     end),
     awful.key({ modkey, }, "#74", function ()
         if string.match(networkstatus, "enabled") then
@@ -98,5 +105,8 @@ clientkeys = gears.table.join(
     end),
     awful.key({ modkey, "Control"}, "f", function (c)
         c.floating = not c.floating
+    end),
+    awful.key({ modkey, }, "t", function (c)
+        awful.titlebar.toggle(c)
     end)
 )

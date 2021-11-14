@@ -23,7 +23,7 @@ end
 beautiful.init(gears.filesystem.get_configuration_dir() .. "theme/init.lua")
 
 -- Some Cool Defines
-terminal = "terminator"
+terminal = "kitty"
 browser = "firefox --new-window"
 discord = "discord"
 modkey = "Mod4"
@@ -81,14 +81,14 @@ awful.screen.connect_for_each_screen(function(s)
             layout = wibox.layout.fixed.horizontal,
             require("widgets/network"),
             s.spacer,
-            require("widgets/volume"),
-            s.spacer,
-            require("widgets/datetime"),
+            require("widgets/time"),
             s.spacer
         }
     }
 
     s.coolpanel = require("layout/panel")(s)
+    s.coolpanel.x = s.geometry.x + (beautiful.useless_gap*2)
+    s.coolpanel.y = s.wibox.height+(beautiful.useless_gap*2)
 end)
 
 -- Awful Rules
@@ -142,27 +142,14 @@ awful.rules.rules = {
         },
         properties = { titlebars_enabled = true }
     },
-    -- Windows to center by default
     {
         rule_any = {
             name = {
-                "Terminator Preferences",
+                "Open Folder", "Open File"
             },
         },
         properties = { placement = awful.placement.centered }
     },
-    --Terminator left bar
-    {
-        rule_any = {
-            class = {
-                "terminator", "Terminator"
-            },
-        },
-        callback = function(c)
-            awful.titlebar.enable_tooltip = false
-            awful.titlebar(c, {size=7, position="left", bg_normal='#1a1c23', bg_focus='#1a1c23'}) : setup {}
-        end
-    }
 
     -- Get Rule Name With xprop
 }
@@ -201,13 +188,14 @@ client.connect_signal("request::titlebars", function(c)
         },
         {
             layout = wibox.layout.flex.horizontal,
-            buttons = titlebarbuttons
+            buttons = titlebarbuttons,
+            {
+                widget = awful.titlebar.widget.titlewidget(c),
+                align = "center"
+            }
         },
         {
             layout = wibox.layout.fixed.horizontal,
-            awful.titlebar.widget.floatingbutton(c),
-            awful.titlebar.widget.maximizedbutton(c),
-            awful.titlebar.widget.closebutton(c),
         },
         layout = wibox.layout.align.horizontal,
         keys = clientkeys,
@@ -251,8 +239,12 @@ end)
 
 -- Restart Picom on Reload
 os.execute('pkill picom')
+os.execute('sleep .1')
 awful.spawn('picom')
 os.execute('pkill fusuma')
 awful.spawn('fusuma')
+
+-- Daemons
+require("evil")
 
 awesome.set_preferred_icon_size(128)

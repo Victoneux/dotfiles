@@ -6,50 +6,34 @@ local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
 
 local _panel = function(s)
+
     local panel = wibox {
         visible = false,
-        ontop = true,
-        splash = false,
-        type = 'dock',
-        width = s.geometry.width*0.95,
-        height = 300,
+        ontop = false,
+        type = 'normal',
+        height = s.geometry.height-(beautiful.useless_gap*4)-s.wibox.height,
+        width = 450,
         screen = s,
-        bg = beautiful.cool1,
-        shape = function(cr,w,h) gears.shape.partially_rounded_rect(cr,w,h,true,true,false,false,14) end
+        bg = beautiful.transparent,
     }
 
-    awful.placement.bottom(panel)
+    awful.placement.left(panel)
 
-    local panel_widget = wibox.widget {
+    local panel_widget1 = wibox.widget {
         expand = 'none',
         layout = wibox.layout.grid,
-        spacing = 5,
-    }
-
-    panel_widget:add_widget_at(require("widgets/profile"), 1, 1, 6, 2)
-    panel_widget:add_widget_at(require("widgets/profile"), 1, 3, 6, 2)
-    panel_widget:add_widget_at(require("widgets/profile"), 1, 5, 6, 2)
-    panel_widget:add_widget_at(require("widgets/profile"), 1, 7, 6, 2)
-    panel_widget:add_widget_at(require("widgets/profile"), 1, 9, 6, 2)
-    panel_widget:add_widget_at(require("widgets/profile"), 1, 11, 6, 2)
-    panel_widget:add_widget_at(wibox.widget {
-        widget = wibox.layout.align.horizontal,
-        expand = "none",
-        wibox.widget{},
-        require("widgets/tasklist")(s),
-        wibox.widget{}
-    }, 7, 1, 1, 12)
-
-    local panel_widget2 = wibox.widget {
-        widget = wibox.container.margin,
-        margins = 5,
-        panel_widget
+        -- require("widgets/volume")
     }
 
     panel : setup {
         layout = wibox.container.background,
-        bg = beautiful.background,
-        panel_widget2
+        bg = beautiful.color0,
+        {
+            require("widgets/panel_bars"),
+            widget = wibox.container.margin,
+            left = panel.width/5,
+            right = panel.width/5,
+        }
     }
 
     return panel

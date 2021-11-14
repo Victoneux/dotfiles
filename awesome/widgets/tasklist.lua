@@ -30,7 +30,7 @@ local _tasklist = function(s)
                 top = 2,
                 {
                     widget = wibox.container.background,
-                    bg = beautiful.bg_normal,
+                    bg = beautiful.color0,
                     {
                         widget = wibox.container.margin,
                         left = 12,
