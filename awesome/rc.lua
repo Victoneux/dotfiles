@@ -140,7 +140,7 @@ awful.rules.rules = {
         rule_any = {
             type = { "normal", "dialog" }
         },
-        properties = { titlebars_enabled = true }
+        properties = { titlebars_enabled = false }
     },
     {
         rule_any = {

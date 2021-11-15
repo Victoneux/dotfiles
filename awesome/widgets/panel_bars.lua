@@ -7,7 +7,7 @@ local dpi = xresources.apply_dpi
 
 local the_widget = wibox.widget {
     layout = wibox.layout.flex.horizontal,
-    require("widgets/volume_bar"),
+    require("widgets/cpu_bar"),
     require("widgets/volume_bar"),
     require("widgets/volume_bar"),
     require("widgets/volume_bar"),
