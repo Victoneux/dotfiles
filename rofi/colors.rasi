@@ -1,7 +1,7 @@
 * {
-  invis:  #00000000;
-  bg:  #272a34;
-  sel:  #101010;
-  fg:  #f3f3f3;
-  top:  #23252e;
+  invis:  #ffffff00;
+  bg:  #282F37;
+  sel:  #20262C;
+  fg:  #F1FCF9;
+  top:  #20262C;
 }

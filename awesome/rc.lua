@@ -79,8 +79,6 @@ awful.screen.connect_for_each_screen(function(s)
         require("widgets/tasklist")(s),
         {
             layout = wibox.layout.fixed.horizontal,
-            require("widgets/network"),
-            s.spacer,
             require("widgets/time"),
             s.spacer
         }
@@ -246,5 +244,8 @@ awful.spawn('fusuma')
 
 -- Daemons
 require("evil")
+
+-- Notifications
+require("notifications")
 
 awesome.set_preferred_icon_size(128)

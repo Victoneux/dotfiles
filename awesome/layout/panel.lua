@@ -12,7 +12,7 @@ local _panel = function(s)
         ontop = false,
         type = 'normal',
         height = s.geometry.height-(beautiful.useless_gap*4)-s.wibox.height,
-        width = 450,
+        width = s.geometry.width/4,
         screen = s,
         bg = beautiful.transparent,
     }
@@ -21,18 +21,27 @@ local _panel = function(s)
 
     local panel_widget1 = wibox.widget {
         expand = 'none',
-        layout = wibox.layout.grid,
-        -- require("widgets/volume")
+        layout = wibox.layout.fixed.vertical,
+        require("widgets/panel_time"),
+        require("widgets/panel_spacer"),
+        require("widgets/panel_dayweek"),
+        require("widgets/panel_spacer"),
+        require("widgets/panel_info"),
+        require("widgets/panel_spacer"),
+        require("widgets/panel_bars"),
+        require("widgets/panel_spacer"),
     }
 
     panel : setup {
         layout = wibox.container.background,
         bg = beautiful.color0,
         {
-            require("widgets/panel_bars"),
             widget = wibox.container.margin,
             left = panel.width/5,
             right = panel.width/5,
+            top = panel.width/10,
+            bottom = 50,
+            panel_widget1
         }
     }
 

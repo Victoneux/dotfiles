@@ -13,6 +13,7 @@ ZSH_THEME="robbyrussell"
 alias icat="kitty +kitten icat"
 alias install="sudo pacman -S --noconfirm"
 alias uninstall="sudo pacman -R --noconfirm"
+alias update="sudo pacman -Syu --noconfirm"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load

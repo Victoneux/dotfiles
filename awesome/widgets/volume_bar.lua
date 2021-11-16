@@ -44,10 +44,10 @@ awesome.connect_signal("evil::volume", function(volume, muted)
     local bg_color
     if muted then
         fill_color = muted_color
-        volume_text.text = "ﱝ"
+        volume_text.text = "ﱝ\n" .. volume .. "%"
     else
         fill_color = active_color
-        volume_text.text = "墳 " .. volume
+        volume_text.text = "墳\n" .. volume .. "%"
     end
     volume_bar.value = volume
     volume_bar.color = fill_color

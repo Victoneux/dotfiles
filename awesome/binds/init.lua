@@ -60,14 +60,6 @@ globalkeys = gears.table.join(
                 left = currentscreen.padding.left-currentscreen.coolpanel.width-(beautiful.useless_gap*2),
             }
         end
-    end),
-    awful.key({ modkey, }, "#74", function ()
-        if string.match(networkstatus, "enabled") then
-            os.execute("nmcli networking off")
-        else
-            os.execute("nmcli networking on")
-        end
-        network_timer:emit_signal("timeout")
     end)
 )
 clientbuttons = gears.table.join(

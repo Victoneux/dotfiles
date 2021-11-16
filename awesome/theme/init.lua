@@ -92,6 +92,8 @@ theme.layout_floating = icons_path .. "layouts/floating.svg"
 
 theme.icon_theme = "papirus"
 
+theme.notification_margin = 200
+
 theme.titlebar_height = dpi(40)
 theme.topbar_height = dpi(34)
 
