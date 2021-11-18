@@ -20,7 +20,6 @@ local lock_screen_box = wibox {
     ontop = true,
     input_passthrough = false,
     type = "splash",
-    bgimage = "theme/wallpaper.jpg",
     screen = screen.primary,
 }
 awful.placement.maximize(lock_screen_box)
@@ -32,18 +31,26 @@ local new_cover = function(s)
         type = "splash",
         screen = s,
     }
-
+    local cover_lock_notif = require("lock/lock_notif")
+    cover_lock_notif.point = function(geo, args)
+        return {
+            x = (args.parent.width-geo.width)/2,
+            y = (args.parent.height-geo.height)/2
+        }
+    end
     cover_box : setup {
         widget = wibox.container.background,
-        bgimage = "theme/wallpaper.jpg",
         forced_width = s.geometry.width,
-        forced_height = s.geometry.height
+        forced_height = s.geometry.height,
+        bgimage = os.getenv("HOME") .. "/dotfiles/awesome/theme/wallpaper.2.jpg",
+        {
+            widget = wibox.layout.manual,
+            cover_lock_notif
+        }
     }
 
     return cover_box
 end
-
-awful.placement.maximize(lock_screen_box)
 
 awful.screen.connect_for_each_screen(function(s)
     if s == screen.primary then
@@ -51,6 +58,7 @@ awful.screen.connect_for_each_screen(function(s)
     else
         s.lockscreen = new_cover(s)
     end
+    awful.placement.maximize(s.lockscreen)
 end)
 
 local set_lock_visibility = function(v)
