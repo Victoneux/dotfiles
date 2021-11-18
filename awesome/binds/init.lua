@@ -13,8 +13,15 @@ globalkeys = gears.table.join(
     awful.key({ modkey, "Control" }, "l", function () awful.spawn("bash /home/victoneux/.config/rofi/languageswitch.sh") end),
     awful.key({ modkey, }, "v", function () 
         currentscreen = awful.screen.focused()
-        if currentscreen.wibox.visible then currentscreen.wibox.visible = false
-        else currentscreen.wibox.visible = true end
+        if currentscreen.wibox.visible then
+            currentscreen.wibox.visible = false
+            currentscreen.coolpanel.height = currentscreen.coolpanel.height+currentscreen.wibox.height
+            currentscreen.coolpanel.y = currentscreen.coolpanel.y-currentscreen.wibox.height
+        else
+            currentscreen.wibox.visible = true
+            currentscreen.coolpanel.height = currentscreen.coolpanel.height-currentscreen.wibox.height
+            currentscreen.coolpanel.y = currentscreen.coolpanel.y+currentscreen.wibox.height
+        end
     end),
     awful.key({ modkey, }, "l", function() 
         lock_screen_show()
