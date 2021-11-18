@@ -248,4 +248,7 @@ require("evil")
 -- Notifications
 require("notifications")
 
+-- Stuff
+require("meta/lockscreen")
+
 awesome.set_preferred_icon_size(128)

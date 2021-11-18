@@ -16,7 +16,9 @@ globalkeys = gears.table.join(
         if currentscreen.wibox.visible then currentscreen.wibox.visible = false
         else currentscreen.wibox.visible = true end
     end),
-    awful.key({ modkey, }, "l", function() awful.spawn("betterlockscreen -l") end),
+    awful.key({ modkey, }, "l", function() 
+        lock_screen_show()
+    end),
     awful.key({ modkey, "Control" }, "r", awesome.restart),
     awful.key({ modkey, }, "Tab",
         function ()

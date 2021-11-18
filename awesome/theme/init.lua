@@ -71,7 +71,7 @@ theme.titlebar_maximized_button_normal_active_hover = icons_path .. "titlebar_ic
 theme.titlebar_maximized_button_focus_active_hover  = icons_path .. "titlebar_icons/" .. "maximized_focus_active_hover.svg"
 
 --Stuf
-theme.wallpaper = themes_path .. "wallpaper.jpg"
+theme.wallpaper = themes_path .. "wallpaper.2.jpg"
 theme.useless_gap = dpi(6)
 
 -- Colors!

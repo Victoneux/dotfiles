@@ -22,14 +22,14 @@ local _panel = function(s)
     local panel_widget1 = wibox.widget {
         expand = 'none',
         layout = wibox.layout.fixed.vertical,
-        require("widgets/panel_time"),
-        require("widgets/panel_spacer"),
-        require("widgets/panel_dayweek"),
-        require("widgets/panel_spacer"),
-        require("widgets/panel_info"),
-        require("widgets/panel_spacer"),
-        require("widgets/panel_bars"),
-        require("widgets/panel_spacer"),
+        require("widgets/panel/panel_time"),
+        require("widgets/panel/panel_spacer"),
+        require("widgets/panel/panel_dayweek"),
+        require("widgets/panel/panel_spacer"),
+        require("widgets/panel/panel_info"),
+        require("widgets/panel/panel_spacer"),
+        require("widgets/panel/panel_bars"),
+        require("widgets/panel/panel_spacer"),
     }
 
     panel : setup {

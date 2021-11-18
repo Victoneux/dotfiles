@@ -4,7 +4,6 @@ rofi_command="rofi -theme powermenu.rasi"
 shutdown=""
 reboot=""
 quit=""
-lock=""
 
 confirm_exit() {
     rofi -dmenu\
@@ -14,7 +13,7 @@ confirm_exit() {
 }
 
 # Variable passed to rofi
-options="$shutdown\n$reboot\n$quit\n$lock"
+options="$shutdown\n$reboot\n$quit"
 
 chosen="$(echo -e "$options" | $rofi_command -p "Power Menu" -dmenu -selected-row 1)"
 case $chosen in
@@ -47,8 +46,5 @@ case $chosen in
         else
 			msg
         fi
-        ;;
-    $lock)
-		betterlockscreen -l
         ;;
 esac
