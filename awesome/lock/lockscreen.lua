@@ -18,6 +18,7 @@ local the_text_box = wibox.widget {
 local lock_screen_box = wibox {
     visible = false,
     ontop = true,
+    input_passthrough = false,
     type = "splash",
     bgimage = "theme/wallpaper.jpg",
     screen = screen.primary,
@@ -60,28 +61,14 @@ end
 
 local characters_entered = 0
 
-local reset = function()
+reset_lock = function()
     characters_entered = 0
     the_text_box.text = ""
 end
 
 grab_password = function()
     awful.prompt.run {
-        hooks = {
-            {{ }, 'Escape',
-                function(_)
-                    reset()
-                    grab_password()
-                end
-            },
-
-            {{ 'Control' }, 'Delete',
-                function ()
-                    reset()
-                    grab_password()
-                end
-            }
-        },
+        hooks = require("lock/toblock"),
         keypressed_callback = function(mod, key, cmd)
             if #key == 1 then
                 characters_entered = characters_entered + 1
@@ -96,13 +83,36 @@ grab_password = function()
         exe_callback = function(input)
             if authenticate(input) then
                 set_lock_visibility(false)
-                reset()
+                reset_lock()
             else
-                reset()
+                reset_lock()
                 grab_password()
             end
         end,
         textbox = wibox.widget.textbox()
+    }
+end
+
+the_text_box.point = function(geo, args)
+    return {
+        x = (args.parent.width-geo.width)/2,
+        y = (args.parent.height-geo.height)/2
+    }
+end
+
+local the_info_box = require("lock/info")
+local lock_notif = require("lock/lock_notif")
+
+the_info_box.point = function(geo, args)
+    return {
+        x = 0,
+        y = (args.parent.height-geo.height)
+    }
+end
+lock_notif.point = function(geo, args)
+    return {
+        x = (args.parent.width-geo.width),
+        y = 0
     }
 end
 
@@ -111,9 +121,12 @@ lock_screen_box : setup {
     bgimage = os.getenv("HOME") .. "/dotfiles/awesome/theme/wallpaper.2.jpg",
     {
         widget = wibox.container.margin,
-        margins = 200,
+        margins = 100,
         {
-            widget = the_text_box
+            layout = wibox.layout.manual,
+            the_text_box,
+            the_info_box,
+            lock_notif
         }
     }
 }
