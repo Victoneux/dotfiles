@@ -114,13 +114,13 @@ local lock_notif = require("lock/lock_notif")
 the_info_box.point = function(geo, args)
     return {
         x = 0,
-        y = (args.parent.height-geo.height)
+        y = ((args.parent.height-geo.height)/2)
     }
 end
 lock_notif.point = function(geo, args)
     return {
         x = (args.parent.width-geo.width),
-        y = 0
+        y = (args.parent.height-geo.height)/2
     }
 end
 

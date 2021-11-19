@@ -10,6 +10,7 @@ local _doge = function(s)
         visible = false,
         ontop = true,
         type = 'normal',
+        input_passthrough = true,
         height = 150,
         width = 300,
         screen = s,
