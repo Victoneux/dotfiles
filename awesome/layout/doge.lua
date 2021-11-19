@@ -19,7 +19,7 @@ local _doge = function(s)
     local doge_text = wibox.widget {
         widget = wibox.widget.textbox,
         text = "",
-        font = 'Roboto Bold 12'
+        font = 'Roboto Bold 11'
     }
 
     doge : setup {
