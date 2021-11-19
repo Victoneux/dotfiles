@@ -87,6 +87,11 @@ awful.screen.connect_for_each_screen(function(s)
     s.coolpanel = require("layout/panel")(s)
     s.coolpanel.x = s.geometry.x + (beautiful.useless_gap*2)
     s.coolpanel.y = s.wibox.height+(beautiful.useless_gap*2)
+
+    s.doge = require("layout/doge")(s)
+    s.doge.x = s.geometry.x + s.geometry.width - s.doge.width - (beautiful.useless_gap*2)
+    s.doge.y = s.wibox.height + (beautiful.useless_gap*2)
+
 end)
 
 -- Awful Rules

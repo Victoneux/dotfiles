@@ -23,6 +23,10 @@ globalkeys = gears.table.join(
             currentscreen.coolpanel.y = currentscreen.coolpanel.y+currentscreen.wibox.height
         end
     end),
+    awful.key({ modkey, }, "z", function () 
+        currentscreen = awful.screen.focused()
+        currentscreen.doge.visible = not currentscreen.doge.visible
+    end),
     awful.key({ modkey, }, "l", function() 
         lock_screen_show()
     end),
