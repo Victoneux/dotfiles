@@ -17,10 +17,12 @@ globalkeys = gears.table.join(
             currentscreen.wibox.visible = false
             currentscreen.coolpanel.height = currentscreen.coolpanel.height+currentscreen.wibox.height
             currentscreen.coolpanel.y = currentscreen.coolpanel.y-currentscreen.wibox.height
+            currentscreen.music.y = currentscreen.music.y - currentscreen.wibox.height
         else
             currentscreen.wibox.visible = true
             currentscreen.coolpanel.height = currentscreen.coolpanel.height-currentscreen.wibox.height
             currentscreen.coolpanel.y = currentscreen.coolpanel.y+currentscreen.wibox.height
+            currentscreen.music.y = currentscreen.music.y + currentscreen.wibox.height
         end
     end),
     awful.key({ modkey, }, "z", function () 

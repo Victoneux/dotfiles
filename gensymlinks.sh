@@ -8,6 +8,5 @@ ln -sf ~/dotfiles/rofi/ ~/.config/
 ln -sf ~/dotfiles/fusuma ~/.config/
 ln -sf ~/dotfiles/betterlockscreenrc ~/.config/
 ln -sf ~/dotfiles/kitty ~/.config/
-ln -sf ~/dotfiles/.themes ~/
 ln -sf ~/dotfiles/.zshrc ~/.zshrc
 ln -sf ~/dotfiles/mpd ~/.config/
