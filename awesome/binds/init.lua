@@ -25,7 +25,7 @@ globalkeys = gears.table.join(
     end),
     awful.key({ modkey, }, "z", function () 
         currentscreen = awful.screen.focused()
-        currentscreen.doge.visible = not currentscreen.doge.visible
+        currentscreen.music.visible = not currentscreen.music.visible
     end),
     awful.key({ modkey, }, "l", function() 
         lock_screen_show()

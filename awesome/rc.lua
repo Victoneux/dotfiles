@@ -88,6 +88,10 @@ awful.screen.connect_for_each_screen(function(s)
     s.coolpanel.x = s.geometry.x + (beautiful.useless_gap*2)
     s.coolpanel.y = s.wibox.height+(beautiful.useless_gap*2)
 
+    s.music = require("layout/music")(s)
+    s.music.x = s.geometry.x + s.geometry.width - (beautiful.useless_gap*2) - s.music.width
+    s.music.y = s.wibox.height+(beautiful.useless_gap*2)
+
 end)
 
 -- Awful Rules
