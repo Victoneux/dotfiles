@@ -26,8 +26,6 @@ local _panel = function(s)
         require("widgets/panel/panel_spacer"),
         require("widgets/panel/panel_dayweek"),
         require("widgets/panel/panel_spacer"),
-        require("widgets/panel/panel_info"),
-        require("widgets/panel/panel_spacer"),
         require("widgets/panel/panel_bars"),
         require("widgets/panel/panel_spacer"),
     }
