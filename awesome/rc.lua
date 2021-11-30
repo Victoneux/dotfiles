@@ -158,10 +158,11 @@ awful.rules.rules = {
 }
 -- Client Init
 client.connect_signal("manage", function (c)
+    local placeholder = gears.surface(gears.filesystem.get_configuration_dir() .. "/theme/icons/custom_icons/placeholder.png")
+
     if awesome.startup then awful.placement.no_offscreen(c) end
 
     -- Custom icons!
-
     if c.class == "GitKraken" then -- GitKraken
         local wow = gears.surface(gears.filesystem.get_configuration_dir() .. "/theme/icons/custom_icons/gitkraken.svg")
         c.icon = wow._native
@@ -170,6 +171,11 @@ client.connect_signal("manage", function (c)
         local wow = gears.surface(gears.filesystem.get_configuration_dir() .. "/theme/icons/custom_icons/gdlauncher.png")
         c.icon = wow._native
     end
+
+    if not c.icon then
+        c.icon = placeholder._native
+    end
+
 end)
 
 -- Titlebar Init
