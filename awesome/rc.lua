@@ -27,7 +27,8 @@ terminal = "kitty"
 browser = "firefox --new-window"
 discord = "discord"
 modkey = "Mod4"
-home_dir = "/good/home"
+home_dir = os.getenv("HOME")
+dot_dir = home_dir .. "/dotfiles"
 
 -- Binds require
 require("binds")
@@ -247,17 +248,14 @@ client.connect_signal("property::maximized", function(c)
 end)
 
 -- Restart Picom on Reload
-os.execute('pkill picom')
-os.execute('sleep .1')
+os.execute('pkill picom; sleep .2')
 awful.spawn('picom')
 os.execute('pkill fusuma')
 awful.spawn('fusuma')
+os.execute('mkdir ' .. home_dir .. '/Screenshots')
 
 -- Daemons
 require("evil")
-
--- Notifications
-require("notifications")
 
 -- Stuff
 require("lock/lockscreen")

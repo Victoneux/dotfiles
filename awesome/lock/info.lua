@@ -12,7 +12,7 @@ local profile_pic = wibox.widget {
     shape_clip = true,
     {
         widget = wibox.widget.imagebox,
-        image = os.getenv("HOME") .. "/dotfiles/pfp.jpg",
+        image = home_dir .. "/dotfiles/pfp.jpg",
         align = "center",
         forced_width = 120,
         forced_height = 120,

@@ -10,7 +10,7 @@ local lock_pic = wibox.widget {
     shape_clip = true,
     {
         widget = wibox.widget.imagebox,
-        image = os.getenv("HOME") .. "/dotfiles/awesome/images/lock.png",
+        image = home_dir .. "/dotfiles/awesome/images/lock.png",
         align = "center",
         forced_width = 90,
         forced_height = 120,

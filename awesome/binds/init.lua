@@ -9,8 +9,8 @@ globalkeys = gears.table.join(
     awful.key({ modkey, }, "b", function () awful.spawn(browser) end),
     awful.key({ modkey, }, "d", function () awful.spawn(discord) end),
     awful.key({ modkey, }, "r", function () awful.spawn("rofi -theme applauncher.rasi -modi drun -show drun") end),
-    awful.key({ modkey, }, "k", function () awful.spawn("bash /home/victoneux/.config/rofi/powermenu.sh") end),
-    awful.key({ modkey, "Control" }, "l", function () awful.spawn("bash /home/victoneux/.config/rofi/languageswitch.sh") end),
+    awful.key({ modkey, }, "k", function () awful.spawn("bash " .. dot_dir .. "/rofi/powermenu.sh") end),
+    awful.key({ modkey, "Control" }, "l", function () awful.spawn("bash " .. dot_dir .. "/rofi/languageswitch.sh") end),
     awful.key({ modkey, }, "v", function () 
         currentscreen = awful.screen.focused()
         if currentscreen.wibox.visible then
@@ -44,10 +44,10 @@ globalkeys = gears.table.join(
     awful.key({ modkey, }, ".", function () awful.layout.inc(-1) end),
     awful.key({ modkey, }, ",", function () awful.layout.inc(1) end),
     awful.key({ modkey, }, "#107", function ()
-        awful.spawn("flameshot gui -p /home/victoneux/Screenshots/")
+        awful.spawn("flameshot gui -p " .. home_dir .. "/Screenshots/")
     end),
     awful.key({ }, "#107", function ()
-        awful.spawn("flameshot screen -c -p /home/victoneux/Screenshots/")
+        awful.spawn("flameshot screen -c -p " .. home_dir .. "/Screenshots/")
     end),
     awful.key({ modkey, }, "#67", function ()
         os.execute("amixer -D pulse set Master toggle")

@@ -126,7 +126,7 @@ end
 
 lock_screen_box : setup {
     widget = wibox.container.background,
-    bgimage = os.getenv("HOME") .. "/dotfiles/awesome/theme/wallpaper.2.jpg",
+    bgimage = home_dir .. "/dotfiles/awesome/theme/wallpaper.2.jpg",
     {
         widget = wibox.container.margin,
         margins = 100,
