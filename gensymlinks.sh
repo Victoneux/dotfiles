@@ -9,3 +9,4 @@ ln -sf ~/dotfiles/betterlockscreenrc ~/.config/
 ln -sf ~/dotfiles/kitty ~/.config/
 ln -sf ~/dotfiles/.zshrc ~/.zshrc
 ln -sf ~/dotfiles/mpd ~/.config/
+ln -sf ~/dotfiles/gtk-settings.ini ~/.config/gtk-3.0/settings.ini
