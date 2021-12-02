@@ -4,6 +4,7 @@ local gears = require("gears")
 local awful = require("awful")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
+local naughty = require("naughty")
 
 local authenticate = function(password)
     return pam.auth_current_user(password)
@@ -91,6 +92,7 @@ grab_password = function()
         exe_callback = function(input)
             if authenticate(input) then
                 set_lock_visibility(false)
+                naughty.resume()
                 reset_lock()
             else
                 reset_lock()
@@ -141,5 +143,6 @@ lock_screen_box : setup {
 
 function lock_screen_show()
     set_lock_visibility(true)
+    naughty.suspend()
     grab_password()
 end
