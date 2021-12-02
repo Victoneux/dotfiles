@@ -7,12 +7,12 @@ local username = os.getenv("USER")
 
 local profile_pic = wibox.widget {
     widget = wibox.container.background,
-    bg = "#ffff00",
+    bg = beautiful.transparent,
     shape = function(cr,w,h) gears.shape.rounded_rect(cr,w,h,5) end,
     shape_clip = true,
     {
         widget = wibox.widget.imagebox,
-        image = home_dir .. "/dotfiles/pfp.jpg",
+        image = home_dir .. "/dotfiles/pfp.png",
         align = "center",
         forced_width = 120,
         forced_height = 120,

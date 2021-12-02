@@ -98,6 +98,16 @@ clientkeys = gears.table.join(
             honor_workarea = true
         })
     end),
+    awful.key({ modkey, "Control" }, "c", function(c)
+        local focused = awful.screen.focused()
+        c.floating = true
+        c.width = focused.geometry.width/1.5
+        c.height = focused.geometry.height/1.5
+
+        awful.placement.centered(c, {
+            honor_workarea = true
+        })
+    end),
     awful.key({ modkey, }, "z", function (c)
         c.minimized = true
     end),
