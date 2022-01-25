@@ -116,6 +116,8 @@ awful.rules.rules = {
             "pinentry",
             },
             class = {
+            "Exodus",
+            "exodus",
             "Arandr",
             "Blueman-manager",
             "Gpick",
@@ -151,6 +153,10 @@ awful.rules.rules = {
             name = {
                 "Open Folder", "Open File"
             },
+            class = {
+                "Exodus",
+                "exodus"
+            }
         },
         properties = { placement = awful.placement.centered }
     },
