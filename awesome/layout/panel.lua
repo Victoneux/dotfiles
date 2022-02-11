@@ -9,9 +9,9 @@ local _panel = function(s)
 
     local panel = wibox {
         visible = false,
-        ontop = true,
+        ontop = false,
         type = 'normal',
-        height = s.geometry.height-(beautiful.useless_gap*4)-s.wibox.height,
+        height = s.geometry.height-(beautiful.useless_gap*6)-s.wibox.height,
         width = s.geometry.width/4,
         screen = s,
         bg = beautiful.transparent,

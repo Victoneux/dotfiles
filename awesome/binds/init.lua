@@ -15,14 +15,30 @@ globalkeys = gears.table.join(
         currentscreen = awful.screen.focused()
         if currentscreen.wibox.visible then
             currentscreen.wibox.visible = false
-            currentscreen.coolpanel.height = currentscreen.coolpanel.height+currentscreen.wibox.height
-            currentscreen.coolpanel.y = currentscreen.coolpanel.y-currentscreen.wibox.height
-            currentscreen.music.y = currentscreen.music.y - currentscreen.wibox.height
+            currentscreen.coolpanel.height = currentscreen.coolpanel.height+currentscreen.wibox.height+(beautiful.useless_gap*2)
+            currentscreen.coolpanel.y = currentscreen.coolpanel.y-currentscreen.wibox.height-(beautiful.useless_gap*2)
+            currentscreen.music.y = currentscreen.music.y - currentscreen.wibox.height - (beautiful.useless_gap*2)
         else
             currentscreen.wibox.visible = true
-            currentscreen.coolpanel.height = currentscreen.coolpanel.height-currentscreen.wibox.height
-            currentscreen.coolpanel.y = currentscreen.coolpanel.y+currentscreen.wibox.height
-            currentscreen.music.y = currentscreen.music.y + currentscreen.wibox.height
+            currentscreen.coolpanel.height = currentscreen.coolpanel.height-currentscreen.wibox.height-(beautiful.useless_gap*2)
+            currentscreen.coolpanel.y = currentscreen.coolpanel.y+currentscreen.wibox.height+(beautiful.useless_gap*2)
+            currentscreen.music.y = currentscreen.music.y + currentscreen.wibox.height + (beautiful.useless_gap*2)
+        end
+
+        if (currentscreen.wibox.visible) then
+            currentscreen.padding = {
+                top = currentscreen.padding.top+currentscreen.wibox.height+(beautiful.useless_gap*2),
+                left = currentscreen.padding.left,
+                bottom = currentscreen.padding.bottom,
+                right = currentscreen.padding.right
+            }
+        else
+            currentscreen.padding = {
+                top = currentscreen.padding.top-currentscreen.wibox.height-(beautiful.useless_gap*2),
+                left = currentscreen.padding.left,
+                bottom = currentscreen.padding.bottom,
+                right = currentscreen.padding.right
+            }
         end
     end),
     awful.key({ modkey, }, "z", function () 
@@ -69,10 +85,16 @@ globalkeys = gears.table.join(
         if (currentscreen.coolpanel.visible) then
             currentscreen.padding = {
                 left = currentscreen.padding.left+currentscreen.coolpanel.width+(beautiful.useless_gap*2),
+                top = currentscreen.padding.top,
+                bottom = currentscreen.padding.bottom,
+                right = currentscreen.padding.right
             }
         else
             currentscreen.padding = {
                 left = currentscreen.padding.left-currentscreen.coolpanel.width-(beautiful.useless_gap*2),
+                top = currentscreen.padding.top,
+                bottom = currentscreen.padding.bottom,
+                right = currentscreen.padding.right
             }
         end
     end)

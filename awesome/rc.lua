@@ -61,13 +61,18 @@ awful.screen.connect_for_each_screen(function(s)
     -- Spacer
     s.spacer = require("widgets/spacer")
     -- Wibox Init
-    s.wibox = awful.wibar(
+    s.wibox = wibox(
         {
-            position = "top",
+            visible = true,
             screen = s,
-            height = beautiful.topbar_height
+            height = beautiful.topbar_height,
+            width = s.geometry.width - beautiful.useless_gap*4,
+            type = normal,
+            bg = beautiful.color0
         }
     )
+    s.wibox.x = s.geometry.x + (beautiful.useless_gap*2)
+    s.wibox.y = (beautiful.useless_gap*2)
     -- Wibox Setup
     s.wibox:setup {
         widget = wibox.layout.align.horizontal,
@@ -87,12 +92,18 @@ awful.screen.connect_for_each_screen(function(s)
 
     s.coolpanel = require("layout/panel")(s)
     s.coolpanel.x = s.geometry.x + (beautiful.useless_gap*2)
-    s.coolpanel.y = s.wibox.height+(beautiful.useless_gap*2)
+    s.coolpanel.y = s.wibox.height+(beautiful.useless_gap*4)
 
     s.music = require("layout/music")(s)
     s.music.x = s.geometry.x + s.geometry.width - (beautiful.useless_gap*2) - s.music.width
-    s.music.y = s.wibox.height+(beautiful.useless_gap*2)
+    s.music.y = s.wibox.height+(beautiful.useless_gap*4)
 
+    s.padding = {
+        top = s.wibox.height + (beautiful.useless_gap*2),
+        left = s.padding.left,
+        bottom = s.padding.top,
+        right = s.padding.right
+    }
 end)
 
 -- Awful Rules
