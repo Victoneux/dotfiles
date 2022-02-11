@@ -140,7 +140,7 @@ clientkeys = gears.table.join(
         c.fullscreen = not c.fullscreen
     end),
     awful.key({ modkey, }, "m", function (c)
-        c.maximized = not c.maximized
+        c.minimized = not c.minimized
     end),
     awful.key({ modkey, "Control"}, "f", function (c)
         c.floating = not c.floating
