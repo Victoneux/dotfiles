@@ -3,6 +3,7 @@ local awful = require("awful")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
 local naughty = require("naughty")
+local private = require("private")
 
 -- Error Handling
 do
