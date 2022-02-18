@@ -1,31 +1,12 @@
 local gears = require("gears")
 local themes_path = gears.filesystem.get_configuration_dir() .. "theme/"
 local icons_path = themes_path .. "icons/"
-local theme = {}
+local theme = require("theme/color")
 local gtk = require("beautiful.gtk")
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
 
 theme.gtk = gtk.get_theme_variables()
-
-theme.background = '#282F37'
-theme.foreground = '#F1FCF9'
-theme.color0 = '#20262C'
-theme.color1 = '#DB86BA'
-theme.color2 = '#74DD91'
-theme.color3 = '#E49186'
-theme.color4 = '#75DBE1'
-theme.color5 = '#B4A1DB'
-theme.color6 = '#9EE9EA'
-theme.color7 = '#F1FCF9'
-theme.color8 = '#465463'
-theme.color9 = '#D04E9D'
-theme.color10 = '#4BC66D'
-theme.color11 = '#DB695B'
-theme.color12 = '#3DBAC2'
-theme.color13 = '#825ECE'
-theme.color14 = '#62CDCD'
-theme.color15 = '#E0E5E5'
 
 -- Titlebar Icons
 theme.titlebar_close_button_normal = icons_path .. "titlebar_icons/" .. "close_normal.svg"
@@ -71,7 +52,7 @@ theme.titlebar_maximized_button_normal_active_hover = icons_path .. "titlebar_ic
 theme.titlebar_maximized_button_focus_active_hover  = icons_path .. "titlebar_icons/" .. "maximized_focus_active_hover.svg"
 
 --Stuf
-theme.wallpaper = themes_path .. "wallpaper.2.jpg"
+theme.wallpaper = themes_path .. "wallpaper.jpg"
 theme.useless_gap = dpi(6)
 
 -- Colors!
@@ -79,14 +60,14 @@ theme.transparent = '#ffffff00'
 
 -- Some Other Stuff
 theme.fg_normal = theme.foreground
-theme.titlebar_bg = theme.color0
-theme.wibar_bg = theme.color0
+theme.titlebar_bg = theme.dark2
+theme.wibar_bg = theme.dark2
 theme.bg_normal = theme.background
 theme.font = theme.gtk.font_family
 theme.tasklist_disable_task_name = true
 theme.tasklist_plain_task_name = true
 theme.tasklist_bg_normal = theme.transparent
-theme.tasklist_bg_focus = theme.color13
+theme.tasklist_bg_focus = theme.red
 theme.layout_tile = icons_path .. "layouts/tile.svg"
 theme.layout_floating = icons_path .. "layouts/floating.svg"
 

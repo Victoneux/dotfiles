@@ -43,7 +43,7 @@ local new_cover = function(s)
         widget = wibox.container.background,
         forced_width = s.geometry.width,
         forced_height = s.geometry.height,
-        bgimage = os.getenv("HOME") .. "/dotfiles/awesome/theme/wallpaper.2.jpg",
+        bgimage = os.getenv("HOME") .. "/dotfiles/awesome/theme/wallpaper.jpg",
         {
             widget = wibox.layout.manual,
             cover_lock_notif
@@ -128,7 +128,7 @@ end
 
 lock_screen_box : setup {
     widget = wibox.container.background,
-    bgimage = home_dir .. "/dotfiles/awesome/theme/wallpaper.2.jpg",
+    bgimage = home_dir .. "/dotfiles/awesome/theme/wallpaper.jpg",
     {
         widget = wibox.container.margin,
         margins = 100,

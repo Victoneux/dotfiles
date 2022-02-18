@@ -27,7 +27,7 @@ local seperator = wibox.widget {
 
 local the_widget = wibox.widget {
     widget = wibox.container.background,
-    bg = beautiful.color0,
+    bg = beautiful.background,
     shape = function(cr,w,h) gears.shape.rounded_rect(cr,w,h,9) end,
     {
         widget = wibox.container.margin,

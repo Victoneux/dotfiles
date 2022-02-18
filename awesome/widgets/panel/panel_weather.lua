@@ -13,9 +13,9 @@ end
 
 local weather_text = wibox.widget{
     text = "Weather unavailable",
-    -- align  = 'center',
+    align  = 'center',
     valign = 'center',
-    -- font = "sans 14",
+    font = "Roboto 14",
     widget = wibox.widget.textbox
 }
 
@@ -27,7 +27,7 @@ local weather_text = wibox.widget{
 local weather = wibox.widget{
     -- weather_icon,
     weather_text,
-    layout = wibox.layout.fixed.horizontal
+    layout = wibox.layout.flex.horizontal
 }
 
 -- local weather_icons = {
@@ -62,7 +62,7 @@ awesome.connect_signal("evil::weather", function(temperature, description, icon_
     -- end
     -- weather_icon.image = "/home/victoneux/dotfiles/pfp.jpg"
 
-    weather_text.markup = description.." "..tostring(temperature)..weather_temperature_symbol
+    weather_text.markup = description.." | "..tostring(temperature)..weather_temperature_symbol
 end)
 
 return weather

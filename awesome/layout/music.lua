@@ -42,7 +42,7 @@ local _music = function(s)
 
     the_widget : setup {
         layout = wibox.container.background,
-        bg = beautiful.color0,
+        bg = beautiful.background,
         {
             widget = wibox.container.margin,
             margins = 10,

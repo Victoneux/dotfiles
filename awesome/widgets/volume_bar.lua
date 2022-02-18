@@ -5,9 +5,9 @@ local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
 
 -- Set colors
-local active_color = beautiful.volume_bar_active_color or "#5AA3CC"
-local muted_color = beautiful.volume_bar_muted_color or "#666666"
-local background_color = "#222222"
+local active_color = beautiful.sky
+local muted_color = beautiful.medium0
+local background_color = beautiful.dark3
 
 local volume_bar = wibox.widget {
     max_value     = 100,

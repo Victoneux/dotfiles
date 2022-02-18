@@ -6,8 +6,8 @@ local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
 
 -- Set colors
-local active_color = beautiful.color2
-local background_color = "#222222"
+local active_color = beautiful.peach
+local background_color = beautiful.dark3
 
 local memory_bar = wibox.widget {
     max_value     = 100,

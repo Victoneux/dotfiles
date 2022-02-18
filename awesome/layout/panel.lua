@@ -34,7 +34,7 @@ local _panel = function(s)
 
     panel : setup {
         layout = wibox.container.background,
-        bg = beautiful.color0,
+        bg = beautiful.background,
         {
             widget = wibox.container.margin,
             left = panel.width/5,

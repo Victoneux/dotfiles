@@ -69,7 +69,7 @@ awful.screen.connect_for_each_screen(function(s)
             height = beautiful.topbar_height,
             width = s.geometry.width - beautiful.useless_gap*4,
             type = normal,
-            bg = beautiful.color0
+            bg = beautiful.wibar_bg
         }
     )
     s.wibox.x = s.geometry.x + (beautiful.useless_gap*2)
