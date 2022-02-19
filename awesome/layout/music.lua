@@ -59,7 +59,7 @@ local _music = function(s)
         }
     }
 
-    awesome.connect_signal("evil::mpd", function(artist, title, paused)
+    awesome.connect_signal("evil::player", function(artist, title, paused)
         artist_text.text = artist
         title_text.text = title
         if paused == true then

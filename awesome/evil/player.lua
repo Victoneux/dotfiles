@@ -1,11 +1,12 @@
 local awful = require("awful")
 
 local function emit_info()
-    awful.spawn.easy_async_with_shell("sh -c 'mpc -f ARTIST@%artist%@TITLE@%title%@FILE@%file%@'",
+    awful.spawn.easy_async_with_shell("sh -c 'playerctl metadata'",
         function(stdout)
-            local artist = stdout:match('^ARTIST@(.*)@TITLE')
-            local title = stdout:match('@TITLE@(.*)@FILE')
-            local status = stdout:match('\n%[(.*)%]')
+            local artist = stdout:match('artist(.*)')
+            artist = artist:match('^%s*(.*)')
+            local title = stdout:match('title(.*)')
+            title = title:match('^%s*(.*)')
 
             if not artist or artist == "" then
               artist = "N/A"
@@ -18,25 +19,21 @@ local function emit_info()
             end
 
             local paused
-            if status == "playing" then
-                paused = false
-            else
-                paused = true
-            end
+            paused = false
 
-            awesome.emit_signal("evil::mpd", artist, title, paused)
+            awesome.emit_signal("evil::player", artist, title, paused)
         end
     )
 end
 
 local mpd_script = [[
   sh -c '
-    mpc idleloop player
+    playerctl metadata title
   ']]
 
 emit_info()
 
-awful.spawn.easy_async_with_shell("ps x | grep \"mpc idleloop player\" | grep -v grep | awk '{print $1}' | xargs kill", function ()
+awful.spawn.easy_async_with_shell("ps x | grep \"playerctl metadata title\" | grep -v grep | awk '{print $1}' | xargs kill", function ()
     -- Emit song info with each line printed
     awful.spawn.with_line_callback(mpd_script, {
         stdout = function()

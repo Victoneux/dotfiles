@@ -12,14 +12,14 @@ dummy_textclock.visible = false
 
 local dotw_initials = {"M", "T", "W", "T", "F", "S", "S"}
 local dotw_colors = {
-    beautiful.flamingo,
-    beautiful.color8,
-    beautiful.color8,
-    beautiful.color8,
+    beautiful.medium1,
+    beautiful.medium1,
+    beautiful.medium1,
+    beautiful.medium1,
     beautiful.medium1,
     -- Different color for weekends ^_^
-    beautiful.color7,
-    beautiful.color7,
+    beautiful.dark0,
+    beautiful.dark0,
 }
 
 local dotw_textboxes = {}
