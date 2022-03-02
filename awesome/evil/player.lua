@@ -1,44 +1,40 @@
 local awful = require("awful")
 
 local function emit_info()
-    awful.spawn.easy_async_with_shell("sh -c 'playerctl metadata'",
-        function(stdout)
-            local artist = stdout:match('artist(.*)')
-            artist = artist:match('^%s*(.*)')
-            local title = stdout:match('title(.*)')
-            title = title:match('^%s*(.*)')
+  awful.spawn.easy_async_with_shell("sh -c 'playerctl metadata && tempcmd=$(playerctl status) && echo gaylolstat:$tempcmd'",
+    function(stdout)
+      local music_artist
+      local music_title
+      local music_paused = ""
 
-            if not artist or artist == "" then
-              artist = "N/A"
-            end
-            if not title or title == "" then
-              title = stdout:match('@FILE@(.*)@')
-              if not title or title == "" then
-                  title = "N/A"
-              end
-            end
+      music_artist = stdout:match('xesam:artist(.*)')
+      if music_artist then
+        music_artist = music_artist:match('^%s*(.*)')
+      else
+        music_artist = "N/A"
+      end
+      music_title = stdout:match('xesam:title(.*)')
+      if music_title then
+        music_title = music_title:match('^%s*(.*)')
+      else
+        music_title = "N/A"
+      end
 
-            local paused
-            paused = false
-
-            awesome.emit_signal("evil::player", artist, title, paused)
+      music_paused = stdout:match('gaylolstat:(.*)')
+      
+      if music_paused then
+        if string.match(music_paused, "Playing") then
+          music_paused = false
+        else
+          music_paused = true
         end
-    )
+      end
+
+      awesome.emit_signal("evil::player", music_artist, music_title, music_paused)
+    end)
 end
 
-local mpd_script = [[
-  sh -c '
-    playerctl metadata title
-  ']]
-
-emit_info()
-
-awful.spawn.easy_async_with_shell("ps x | grep \"playerctl metadata title\" | grep -v grep | awk '{print $1}' | xargs kill", function ()
-    -- Emit song info with each line printed
-    awful.spawn.with_line_callback(mpd_script, {
-        stdout = function()
-            emit_info()
-        end
-    })
+awful.widget.watch('playerctl metadata', 0.5, function(widget, stdout)
+  emit_info()
 end)
 
