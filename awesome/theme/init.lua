@@ -6,8 +6,6 @@ local gtk = require("beautiful.gtk")
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
 
-theme.gtk = gtk.get_theme_variables()
-
 -- Titlebar Icons
 theme.titlebar_close_button_normal = icons_path .. "titlebar_icons/" .. "close_normal.svg"
 theme.titlebar_close_button_focus  = icons_path .. "titlebar_icons/" .. "close_focus.svg"
@@ -63,7 +61,7 @@ theme.fg_normal = theme.foreground
 theme.titlebar_bg = theme.dark2
 theme.wibar_bg = theme.dark2
 theme.bg_normal = theme.background
-theme.font = theme.gtk.font_family
+theme.font = "Roboto Condensed 11"
 theme.tasklist_disable_task_name = true
 theme.tasklist_plain_task_name = true
 theme.tasklist_bg_normal = theme.transparent
