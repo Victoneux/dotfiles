@@ -93,6 +93,7 @@ grab_password = function()
             if authenticate(input) then
                 set_lock_visibility(false)
                 naughty.resume()
+                naughty.destroy_all_notifications()
                 reset_lock()
             else
                 reset_lock()
@@ -143,6 +144,7 @@ lock_screen_box : setup {
 
 function lock_screen_show()
     set_lock_visibility(true)
+    naughty.destroy_all_notifications()
     naughty.suspend()
     grab_password()
 end

@@ -2,6 +2,7 @@ local gears = require("gears")
 local awful = require("awful")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
+local naughty = require("naughty")
 
 globalkeys = gears.table.join(
     awful.key({modkey, }, "o", awful.client.movetoscreen),
@@ -44,6 +45,9 @@ globalkeys = gears.table.join(
     awful.key({ modkey, }, "z", function () 
         currentscreen = awful.screen.focused()
         currentscreen.music.visible = not currentscreen.music.visible
+    end),
+    awful.key({ modkey }, "n", function ()
+        naughty.toggle()
     end),
     awful.key({ modkey, }, "l", function() 
         lock_screen_show()
