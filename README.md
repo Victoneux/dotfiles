@@ -1,4 +1,4 @@
-# dotfiles
+# awesome-dotfiles
 The dotfiles for my Arch Linux rice, made for my desktop (eugh, nvidia drivers, no wayland :<). You probably shouldn't use any of them, my code is spaghetti.
 
 Required Packages:
