@@ -1,5 +1,5 @@
 # awesome-dotfiles
-The dotfiles for my Arch Linux rice, made for my desktop (eugh, nvidia drivers, no wayland :<). You probably shouldn't use any of them, my code is spaghetti.
+The dotfiles for my Arch Linux rice. Complete spaghetti code, but if it works, it works!
 
 Required Packages:
   pacman -S **awesome rofi sddm**
