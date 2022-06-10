@@ -3,7 +3,6 @@ local awful = require("awful")
 local wibox = require("wibox")
 local beautiful = require("beautiful")
 local naughty = require("naughty")
-local private = require("private")
 
 -- Error Handling
 do
@@ -58,7 +57,7 @@ awful.screen.connect_for_each_screen(function(s)
     set_wallpaper(s)
 
     -- Define Desktops
-    awful.tag({ "1" }, s, awful.layout.layouts[1])
+    awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9", "0" }, s, awful.layout.layouts[1])
     -- Spacer
     s.spacer = require("widgets/spacer")
     -- Wibox Init
@@ -82,6 +81,8 @@ awful.screen.connect_for_each_screen(function(s)
             layout = wibox.layout.fixed.horizontal,
             s.spacer,
             require("widgets/battery"),
+	    s.spacer,
+	    require("widgets/taglist")(s),
         },
         require("widgets/tasklist")(s),
         {
@@ -270,12 +271,8 @@ os.execute('pkill picom; sleep .2')
 awful.spawn('picom')
 os.execute('pkill fusuma')
 awful.spawn('fusuma')
-os.execute('mkdir ' .. home_dir .. '/Screenshots')
 
 -- Daemons
 require("evil")
-
--- Stuff
-require("lock/lockscreen")
 
 awesome.set_preferred_icon_size(128)

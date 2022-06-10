@@ -49,9 +49,6 @@ globalkeys = gears.table.join(
     awful.key({ modkey }, "n", function ()
         naughty.toggle()
     end),
-    awful.key({ modkey, }, "l", function() 
-        lock_screen_show()
-    end),
     awful.key({ modkey, "Control" }, "r", awesome.restart),
     awful.key({ modkey, }, "Tab",
         function ()
@@ -64,10 +61,10 @@ globalkeys = gears.table.join(
     awful.key({ modkey, }, ".", function () awful.layout.inc(-1) end),
     awful.key({ modkey, }, ",", function () awful.layout.inc(1) end),
     awful.key({ modkey, }, "#107", function ()
-        awful.spawn("flameshot gui -p " .. home_dir .. "/Screenshots/")
+        os.execute("maim | xclip -selection clipboard -t image/png -i && maim /home/victoneux/screenshots/$(date +'%Y-%m-%d_%H.%M.%S').png")
     end),
     awful.key({ }, "#107", function ()
-        awful.spawn("flameshot screen -c -p " .. home_dir .. "/Screenshots/")
+    	os.execute("thing=$(slop) && maim -g $thing | xclip -selection clipboard -t image/png -i && maim -g $thing /home/victoneux/screenshots/$(date +'Y-%m-%d_%H.%M.%S').png")
     end),
     awful.key({ modkey, }, "#67", function ()
         os.execute("amixer -D pulse set Master toggle")
@@ -101,6 +98,37 @@ globalkeys = gears.table.join(
                 right = currentscreen.padding.right
             }
         end
+    end),
+
+    awful.key({ modkey, }, "1", function ()
+	    awful.tag.viewidx(1 - awful.screen.focused().selected_tag.index)
+    end),
+    awful.key({ modkey, }, "2", function ()
+	    awful.tag.viewidx(2 - awful.screen.focused().selected_tag.index)
+    end),
+    awful.key({ modkey, }, "3", function ()
+	    awful.tag.viewidx(3 - awful.screen.focused().selected_tag.index)
+    end),
+    awful.key({ modkey, }, "4", function ()
+	    awful.tag.viewidx(4 - awful.screen.focused().selected_tag.index)
+    end),
+    awful.key({ modkey, }, "5", function ()
+	    awful.tag.viewidx(5 - awful.screen.focused().selected_tag.index)
+    end),
+    awful.key({ modkey, }, "6", function ()
+	    awful.tag.viewidx(6 - awful.screen.focused().selected_tag.index)
+    end),
+    awful.key({ modkey, }, "7", function ()
+	    awful.tag.viewidx(7 - awful.screen.focused().selected_tag.index)
+    end),
+    awful.key({ modkey, }, "8", function ()
+	    awful.tag.viewidx(8 - awful.screen.focused().selected_tag.index)
+    end),
+    awful.key({ modkey, }, "9", function ()
+	    awful.tag.viewidx(9 - awful.screen.focused().selected_tag.index)
+    end),
+    awful.key({ modkey, }, "0", function ()
+	    awful.tag.viewidx(0 - awful.screen.focused().selected_tag.index)
     end)
 )
 clientbuttons = gears.table.join(
