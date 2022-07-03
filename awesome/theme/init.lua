@@ -75,6 +75,8 @@ theme.icon_theme = "papirus"
 
 theme.notification_margin = 200
 
+theme.taglist_fg_focus = theme.red
+
 theme.titlebar_height = dpi(40)
 theme.topbar_height = dpi(34)
 
